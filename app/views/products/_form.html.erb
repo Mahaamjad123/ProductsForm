@@ -1,0 +1,100 @@
+<%= form_with model: @product , url: products_path, local: true  do |product_form| %>
+
+        <h2>Company details</h2>
+       <%# <%= select_year(2009) %> 
+       <%# <%= time_zone_select(:person, :time_zone) %>
+       <%# <%= select_date Date.today, prefix: :start_date %> 
+       <%# <%= date_select :person, :birth_date %> 
+       <p>
+            <%= product_form.label :Company_Name%> <br>
+            <%= product_form.text_field :company_name, :size=>"30"%>
+            <small id="passwordHelpBlock"><%= image_tag("alert.png", width: 11) %>Full Name</small>
+      </p>
+
+      <p>
+            <%= product_form.label :Upload_Logo%> <br>
+            <%= product_form.file_field :image , class: "form-controll"%>
+      </p>
+
+       <p>
+            <%= product_form.label :City %>
+            <%= product_form.label :Email %><br>
+            <%= product_form.text_field :city %>
+            <%= product_form.email_field :email, :size=>"50", :placeholder=>"example@gmail.com" %>
+      </p>
+
+      <p>
+            <%= product_form.label :Address %><br>
+            <%= product_form.text_area :address, :size=>"70" %>
+            <small id="passwordHelpBlock"><%= image_tag("alert.png", width: 11) %> Permanent Address</small>
+      </p>
+       
+      <p>
+            <%= product_form.label :Contact_Number %><br>
+            <%= product_form.telephone_field :contact_number%>
+            <small id="passwordHelpBlock"><%= image_tag("alert.png", width: 11) %> Personal Number</small>
+      </p>
+      
+      <h2>Product details</h2>
+
+      <p>
+            <%= product_form.label :Product_Name%> <br>
+            <%= product_form.text_field :product_name, :size=>"30"%>
+            <small id="passwordHelpBlock"><%= image_tag("alert.png", width: 11) %>Full Name</small>
+      </p>
+
+      <p>
+            <%= product_form.label :Item_Code%> <br>
+            <%= product_form.number_field :item_code%>
+      </p>
+
+      <p>
+            <%= product_form.label :Original_Price%>
+            <%= product_form.label :Sale_Price%> <br>
+            <%= product_form.number_field :regular_price%>
+            <%= product_form.number_field :sale_price%>
+      </p>
+
+      <p>
+            <%= product_form.label :Quantity%> <br>
+            <%= product_form.number_field :quantity%>
+      </p>
+
+      <p>
+          <%= product_form.label :MFG_Date %>
+          <%= product_form.label :EXP_Date %><br>
+          <%= product_form.date_field:mfg_date%>
+          <%= product_form.date_field:exp_date%>
+      </p>
+
+      <p>
+          <%= product_form.label :Catagory %><br>
+          <%= product_form.select(:catagory, [['Cosmetics', 1], ['Crockry', 2], ['Sanitry', 3] , ['Fruits & Vegetables', 4] , ['Grocery', 5] , ['Health', 6] , ['Home Appliances', 7] , ['Other', 8]]) %>
+      </p>
+
+        <p>
+            <%= product_form.label :Product_Description %><br>
+            <%= product_form.text_area :product_description, :size=>"70" %>
+        </p>  
+        
+        <%= product_form.fields_for :feedbacks  do |feedback_form| %> 
+             <h2>Add Feedback</h2>
+              <p>
+                  <%= feedback_form.label :Name%> <br>
+                  <%= feedback_form.text_field :name%>
+              </p> 
+          
+              <p> 
+                <%= feedback_form.label :feedback %> <br>
+                <%= feedback_form.text_area :body %>
+              </p> 
+        <% end %>
+      <p>
+            <%= product_form.label :Terms_and_Conditions %>
+            <%= product_form.check_box :agreement %>
+      </p>
+
+      <p>
+            <%= product_form.submit %>
+      </p>
+<% end %>
